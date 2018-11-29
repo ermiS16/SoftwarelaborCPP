@@ -1,0 +1,59 @@
+/*
+ * String.cpp
+ *
+ *  Created on: 29.11.2018
+ *      Author: Eric
+ */
+
+#include "String.h"
+
+
+	String::String(){
+		size = 0;
+		str = new char[1];
+		str[0] = '\0';
+
+	}
+	String::String(char c){
+	    size = 1;
+	    str = new char[2];
+	    str[0] = c;
+	    str[1] = '\0';
+	}
+	String::String(const char *s) {
+		int i=0;
+		while(s[i] != '\0'){
+			i++;
+		}
+		size = i;
+		str = new char[size+1];
+		for(int i=0; i<size;i++){
+			str[i] = s[i];
+		}
+		str[size+1] = '\0';
+	}
+
+	String::String(const String& s) {
+		size = s.size;
+		str = new char[size+1];
+		str = s.str;
+		str[size+1] = '\0';
+	}
+
+	String::~String() {
+		delete[] str;
+	}
+
+	char& String::operator[](int index) {
+		return this->str[index];
+	}
+
+	String& String::operator=(String& s) {
+		return this->String(s.str);
+	}
+
+//	String& String::operator+=(String& s) {
+//	  // TODO
+//	}
+
+
