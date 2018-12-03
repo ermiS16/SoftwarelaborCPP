@@ -11,10 +11,12 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "String.h"
+#include "RE.h"
 using namespace std;
 
 int main(void);
 void testString(void);
+void testRegex(void);
 ostream& operator<< (ostream &out, String &s);
 
 #endif /* MAIN_H_ */
