@@ -36,7 +36,7 @@
 	String::String(const String& s) {
 		size = s.size;
 		str = new char[size+1];
-		str = s.str;
+		str = (s.str);
 		str[size+1] = '\0';
 	}
 
@@ -49,11 +49,35 @@
 	}
 
 	String& String::operator=(String& s) {
-		return this->String(s.str);
+		if(this != &s){
+			delete this->str;
+			str = new char[sizeof(s)];
+		}
+		return *this;
 	}
 
-//	String& String::operator+=(String& s) {
-//	  // TODO
-//	}
+	String& String::operator+=(String& s) {
+		int newSize = this->size+s.size;
+		char *newString = new char(newSize);
+		int index=0;
+		for(int i=0; i<this->size;i++){
+			newString[index] = this->str[i];
+//			newString++;
+			index++;
+		}
+		for(int i=0; i< s.size ;i++){
+			newString[index] = s.str[i];
+			index++;
+		}
+		newString[index] = '\0';
+
+		delete str;
+		str = new char[newSize];
+		str = newString;
+		size = newSize;
+
+		return *this;
+
+	}
 
 

@@ -14,6 +14,7 @@
 using namespace std;
 
 int main(void);
+void testString(void);
 ostream& operator<< (ostream &out, String &s);
 
 #endif /* MAIN_H_ */
