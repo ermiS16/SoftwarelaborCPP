@@ -138,6 +138,23 @@ class Conc : public RE {
   bool isPhi() {
     return (r1->isPhi() || r2->isPhi());
   }
+  RE* simp(){
+
+	  // Simplify subparts
+	  r1 = r1->simp();
+	  r2 = r2->simp();
+
+	  // Then, check if any of the simplification rules are applicable
+
+	  // 1 `eps r ==> r´
+	  if(r1->ofType() == EpsType) return r2;
+	  if(r2->ofType() == EpsType) return r1;
+
+	  //2 r1 r2 ==> phi falls `L(r1)={} oder L(r2)={}´
+	  if(r1->isPhi() || r2->isPhi()) return new Phi();
+
+	  return this;
+  }
 };
 
 class Star : public RE {

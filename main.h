@@ -16,7 +16,7 @@ using namespace std;
 
 int main(void);
 void testString(void);
-void testRegex(void);
+void regex(void);
 ostream& operator<< (ostream &out, String &s);
 
 #endif /* MAIN_H_ */

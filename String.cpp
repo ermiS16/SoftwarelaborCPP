@@ -49,10 +49,6 @@
 	}
 
 	String& String::operator=(String& s) {
-		if(this != &s){
-			delete this->str;
-			str = new char[sizeof(s)];
-		}
 		return *this;
 	}
 
