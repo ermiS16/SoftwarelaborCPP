@@ -103,6 +103,9 @@ class Alt : public RE {
 
     // Then, check if any of the simplification rules are applicable
 
+    // 5. r + r ==> r
+    if(r1 == r2) return r1;
+
     // 6. `r1 + r2 ==> r2` falls `L(r1)={}`
     if(r1->isPhi()) return r2;
     // 7. `r1 + r2 ==> r1` falls `L(r2)={}`

@@ -83,6 +83,14 @@ void regex(void){
 	  cout << r12->pretty();
 	  cout << " ==> " << r12->simp()->pretty() << endl;
 	  cout << endl;
+
+	  //r + r
+	  RE* r13 = new Ch('C');
+	  RE* r14 = new Alt(r13, r13);
+
+	  cout << "Rule 5: " << endl;
+	  cout << r14->pretty();
+	  cout << " ==> " << r4->simp()->pretty() << endl;
 }
 
 void testString(){
