@@ -6,16 +6,26 @@
  */
 
 #include "main.h"
+//#include "RE.h"
+#include "TestRegex.h"
+#include "StringTest.h"
 
 int main(void){
-
-//	testString();
-	regex();
+	cout << "Start Test Regex" << endl;
+	cout << endl;
+	initializeTestRegex();
+	testRegex();
+	cout << "End Test Regex" << endl;
+	cout << endl;
+	cout << "Start Test String Operators" << endl;
+	cout << endl;
+	initializeTestString();
+	testString();
+	cout << "End Test String Operators" << endl;
+	cout << endl;
 	return 0;
 }
-
-
-
+/*
 void regex(void){
 
 	  // phi + c
@@ -92,31 +102,4 @@ void regex(void){
 	  cout << r14->pretty();
 	  cout << " ==> " << r4->simp()->pretty() << endl;
 }
-
-void testString(){
-	  String s1;
-	  cout << "s1: " << s1 << endl;
-	  String s2("Hello");
-	  cout << "s2: " << s2 << endl;
-	  String s3(s2);
-	  cout << "s3: " << s3 << endl;
-	  String s4 = s2;
-	  cout << "s4: " << s4 << endl;
-	  s1 += s2;
-	  cout << "s1: " << s1 << endl;
-	  String s5("World");
-	  s2 += s5;
-	  cout << "s2: " << s2 << endl;
-	  s2 += s2;
-	  cout << "s2: " << s2 << endl;
-	  String s6(s2);
-	  cout << "s6; " << s6 << endl;
-}
-
-ostream& operator<< (ostream &out, String &s) {
-  for(int i=0; i<s.size; i++) {
-    out << s.str[i];
-  }
-
-  return out;
-}
+*/
