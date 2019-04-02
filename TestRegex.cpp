@@ -5,8 +5,11 @@
  *      Author: eric
  */
 #include "TestRegex.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
 
-
+/*
 void regex(void){
 
 	  // phi + c
@@ -83,22 +86,22 @@ void regex(void){
 	  cout << r14->pretty();
 	  cout << " ==> " << r4->simp()->pretty() << endl;
 }
-
-
+*/
 void initializeTestRegex(void){
-	RE* r1 = new Alt (new Phi(), new Ch('c'));
-	RE* r1Simp = new Ch('c');
-	RE* r2 = new Alt (new Ch('c'), new Phi());
-	RE* r2Simp = r1Simp;
+	RE* r6 = new Alt (new Phi(), new Ch('c'));
+	RE* r6Simp = new Ch('c');
+	RE* r7 = new Alt (new Ch('c'), new Phi());
+	RE* r7Simp = r6Simp;
 
-	TestCaseRegex test[] = {{r1, r1Simp,""+'c', "c"},
-							{r1, r1Simp,"Hallo", ""},
-							{r2, r2Simp,""+'c', "c"},
-							{r2, r2Simp,"Hallo", ""},
+	TestCaseRegex test[] = {{r6, r6Simp,""+'c', true},
+							{r6, r6Simp,"Hallo", false},
+							{r7, r7Simp,""+'c', true},
+							{r7, r7Simp,"Hallo", false}
 
 	};
-		runTestRegex(TEST_NO_STRING, test);
+		runTestRegex(TEST_NO_REGEX, test);
 
+/*
 	  // c**
 	  RE* r5 = new Star(new Star (new Ch('c')));
 
@@ -160,6 +163,7 @@ void initializeTestRegex(void){
 	  cout << "Rule 5: " << endl;
 	  cout << r14->pretty();
 	  cout << " ==> " << r4->simp()->pretty() << endl;
+*/
 }
 
 void runTestRegex(int no, TestCaseRegex test[]){
@@ -176,6 +180,7 @@ Test testRegex(){
  return t;
 }
 
+/*
 RE* deriv(RE* r, char l) {
 
   switch(r->ofType()) {
@@ -209,13 +214,13 @@ RE* deriv(RE* r, char l) {
       return new Conc(deriv(r1,l),r2);
     }
   }
-
+  default: return r;
   }// switch
 
 }
 
 bool match(RE* r, string s) {
-  for(int i=0; i < s.length(); i++) {
+  for(int i=0; i < (signed) s.length(); i++) {
     r = deriv(r, s[i]);
   }
   return r->containsEps();
@@ -225,3 +230,4 @@ bool orakel(RE* r, RE* rSimp, string s) {
     return (match(r,s) == match(rSimp,s));
 }
 
+*/

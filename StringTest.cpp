@@ -5,7 +5,6 @@
  *      Author: Eric
  */
 
-#include "String.h"
 #include "StringTest.h"
 
 void initializeTestString(){

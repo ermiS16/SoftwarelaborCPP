@@ -6,14 +6,17 @@
  */
 
 #include "main.h"
-//#include "RE.h"
 #include "TestRegex.h"
 #include "StringTest.h"
+//#include <stdlib.h>
+//#include <stdio.h>
+#include "String.h"
+
 
 int main(void){
 	cout << "Start Test Regex" << endl;
 	cout << endl;
-	regex();
+//	regex();
 	initializeTestRegex();
 	testRegex();
 	cout << "End Test Regex" << endl;

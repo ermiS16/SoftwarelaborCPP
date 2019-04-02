@@ -11,6 +11,7 @@
 #define TEST_NO_STRING 10
 
 #include "TestEnum.h"
+#include "String.h"
 
 typedef struct {
 	String s1;
