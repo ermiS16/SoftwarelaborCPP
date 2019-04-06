@@ -40,6 +40,12 @@
 		str[size+1] = '\0';
 	}
 
+	String::String(String&& s){
+		this->size = s.size;
+		this->str = s.str;
+		s.str = nullptr;
+	}
+
 	String::~String() {
 		delete[] str;
 	}
@@ -49,6 +55,19 @@
 	}
 
 	String& String::operator=(String& s) {
+		if(this != &s){
+			delete str;
+			str = new char[*s.str];
+		}
+		return *this;
+	}
+
+	String& String::operator=(String&& s){
+		if(this != &s){
+			delete this->str;
+			this->str = s.str;
+			s.str = nullptr;
+		}
 		return *this;
 	}
 

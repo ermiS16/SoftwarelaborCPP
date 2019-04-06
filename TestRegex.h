@@ -10,23 +10,24 @@
 
 
 #include "TestEnum.h"
+#include "RE.h"
 #define TEST_NO_REGEX 4
 
-//typedef struct{
-//	RE *r;
-//	RE *simple;
-//	const char *w;
-//	bool expected;
-//} TestCaseRegex;
+typedef struct{
+	RE *r;
+	RE *simple;
+	const char *w;
+	bool expected;
+} TestCaseRegex;
 
 
 void regex(void);
-//void initializeTestRegex(void);
-//void runTestRegex(int no, TestCaseRegex test[]);
-//Test testRegex();
+void initializeTestRegex(void);
+void runTestRegex(int no, TestCaseRegex test[]);
+Test testRegex(RE* r, RE* simpR, const char* c, bool expected);
 
-//RE *deriv(RE *r, char l);
-//bool match(RE *r, string s);
-//bool orakel(RE *r, RE *rSimp, string l);
+RE *deriv(RE *r, char l);
+bool match(RE *r, string s);
+bool orakel(RE *r, RE *rSimp, string l);
 
 #endif /* TESTREGEX_H_ */

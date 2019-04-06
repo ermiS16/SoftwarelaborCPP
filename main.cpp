@@ -16,9 +16,8 @@ int main(void){
 
 	cout << "Start Test Regex" << endl;
 	cout << endl;
-	regex();
-//	initializeTestRegex();
-//	testRegex();
+//	regex();
+	initializeTestRegex();
 	cout << "End Test Regex" << endl;
 	cout << endl;
 	cout << "Start Test String Operators" << endl;
