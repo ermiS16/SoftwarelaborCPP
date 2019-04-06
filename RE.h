@@ -13,6 +13,8 @@
 
 using namespace std;
 
+
+
 // Vorwaertzreferenz
 class RE;
 

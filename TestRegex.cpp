@@ -4,12 +4,15 @@
  *  Created on: 27.03.2019
  *      Author: eric
  */
-#include "TestRegex.h"
+//#include "TestRegex.h"
+
+#include "RE.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 
-/*
+
+
 void regex(void){
 
 	  // phi + c
@@ -86,7 +89,7 @@ void regex(void){
 	  cout << r14->pretty();
 	  cout << " ==> " << r4->simp()->pretty() << endl;
 }
-*/
+/*
 void initializeTestRegex(void){
 	RE* r6 = new Alt (new Phi(), new Ch('c'));
 	RE* r6Simp = new Ch('c');
@@ -101,7 +104,7 @@ void initializeTestRegex(void){
 	};
 		runTestRegex(TEST_NO_REGEX, test);
 
-/*
+
 	  // c**
 	  RE* r5 = new Star(new Star (new Ch('c')));
 
@@ -163,8 +166,9 @@ void initializeTestRegex(void){
 	  cout << "Rule 5: " << endl;
 	  cout << r14->pretty();
 	  cout << " ==> " << r4->simp()->pretty() << endl;
-*/
+
 }
+
 
 void runTestRegex(int no, TestCaseRegex test[]){
 
@@ -175,12 +179,13 @@ void runTestRegex(int no, TestCaseRegex test[]){
 	}
 }
 
+
 Test testRegex(){
  Test t=OK;
  return t;
 }
 
-/*
+
 RE* deriv(RE* r, char l) {
 
   switch(r->ofType()) {
@@ -229,5 +234,5 @@ bool match(RE* r, string s) {
 bool orakel(RE* r, RE* rSimp, string s) {
     return (match(r,s) == match(rSimp,s));
 }
-
 */
+
