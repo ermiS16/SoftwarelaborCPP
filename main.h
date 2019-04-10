@@ -9,6 +9,7 @@
 #define MAIN_H_
 #include "TestRegex.h"
 #include "StringTest.h"
+#include "TestReverse.h"
 #include "String.h"
 #include "reverseRecursive.h"
 

@@ -11,11 +11,11 @@
 
 #include "TestEnum.h"
 #include "RE.h"
-#define TEST_NO_REGEX 4
+#define TEST_NO_REGEX 25
 
 typedef struct{
 	RE *r;
-	RE *simple;
+	RE *simpR;
 	const char *w;
 	bool expected;
 } TestCaseRegex;
@@ -24,7 +24,7 @@ typedef struct{
 void regex(void);
 void initializeTestRegex(void);
 void runTestRegex(int no, TestCaseRegex test[]);
-Test testRegex(RE* r, RE* simpR, const char* c, bool expected);
+Test testRegex(RE* r, RE *simpR,const char* c, bool expected);
 
 RE *deriv(RE *r, char l);
 bool match(RE *r, string s);

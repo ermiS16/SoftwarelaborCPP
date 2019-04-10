@@ -12,7 +12,7 @@ char *reverseRec(char *s){
 	if(*s != '\0'){
 		c=*s;
 		s++;
-		reverseRec(s);
+		s = reverseRec(s);
 	}
 	s = putBack(s, c);
 	return s;

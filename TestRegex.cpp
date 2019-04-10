@@ -14,43 +14,6 @@
 
 
 void regex(void){
-
-	  // phi + c
-	  RE* r3 = new Alt (new Phi(), new Ch('c'));
-	  // c + phi
-	  RE* r4 = new Alt (new Ch('c'), new Phi());
-
-	  cout << "Rule 6 & 7:" << endl;
-	  cout << r3->pretty();
-	  cout << " ==> " << r3->simp()->pretty() << endl;
-	  cout << r4->pretty();
-	  cout << " ==> " << r3->simp()->pretty() << endl;
-	  cout << endl;
-
-	  // c**
-	  RE* r5 = new Star(new Star (new Ch('c')));
-
-	  cout << "Rule 4:" << endl;
-	  cout << r5->pretty();
-	  cout << " ==> " << r5->simp()->pretty() << endl;
-	  cout << endl;
-	  // phi*
-	  RE* r6 = new Star(new Phi());
-
-	  cout << "Rule 3: " << endl;
-	  cout << r6->pretty();
-	  cout << " ==> " << r6->simp()->pretty() << endl;
-	  cout << endl;
-
-	  // (phi + c) + c**
-	  RE* r7 = new Alt(r3,r5);
-
-	  cout << "Rule 7 & 4:" << endl;
-	  cout << r7->pretty();
-	  // exhaustively apply simplifications
-	  cout << " ==> " << simpFix(r7)->pretty() << endl;
-	  cout << endl;
-
 	  //eps r
 	  RE* r8 = new Conc(new Eps(), new Ch('C'));
 	  //r eps
@@ -74,6 +37,49 @@ void regex(void){
 	  cout << " ==> " << r11->simp()->pretty() << endl;
 	  cout << endl;
 
+	  // phi*
+	  RE* r6 = new Star(new Phi());
+
+	  cout << "Rule 3: " << endl;
+	  cout << r6->pretty();
+	  cout << " ==> " << r6->simp()->pretty() << endl;
+	  cout << endl;
+
+	// c**
+	  RE* r5 = new Star(new Star (new Ch('c')));
+
+	  cout << "Rule 4:" << endl;
+	  cout << r5->pretty();
+	  cout << " ==> " << r5->simp()->pretty() << endl;
+	  cout << endl;
+
+	  //r + r
+	  RE* r13 = new Ch('c');
+	  RE* r14 = new Alt(r13, r13);
+
+	  cout << "Rule 5: " << endl;
+	  cout << r14->pretty();
+	  cout << " ==> " << r14->simp()->pretty() << endl;	  cout << endl;
+
+	  // phi + c
+	  RE* r3 = new Alt (new Phi(), new Ch('c'));
+	  // c + phi
+	  RE* r4 = new Alt (new Ch('c'), new Phi());
+	  cout << "Rule 6 & 7:" << endl;
+	  cout << r3->pretty();
+	  cout << " ==> " << r3->simp()->pretty() << endl;
+	  cout << r4->pretty();
+	  cout << " ==> " << r3->simp()->pretty() << endl;
+	  cout << endl;
+
+	  // (phi + c) + c**
+	  RE* r7 = new Alt(r3,r5);
+	  cout << "Rule 7 & 4:" << endl;
+	  cout << r7->pretty();
+	  // exhaustively apply simplifications
+	  cout << " ==> " << simpFix(r7)->pretty() << endl;
+	  cout << endl;
+
 	  //eps ((a*)* (phi + b))
 	  RE* r12 = new Conc(new Eps(), new Conc(new Star(new Ch('a')), new Alt(new Phi(), new Ch('b'))));
 	  cout << "Complex Example: " << endl;
@@ -81,26 +87,67 @@ void regex(void){
 	  cout << " ==> " << r12->simp()->pretty() << endl;
 	  cout << endl;
 
-	  //r + r
-	  RE* r13 = new Ch('C');
-	  RE* r14 = new Alt(r13, r13);
-
-	  cout << "Rule 5: " << endl;
-	  cout << r14->pretty();
-	  cout << " ==> " << r4->simp()->pretty() << endl;
 }
 
 void initializeTestRegex(void){
+	// phi*
+	RE* r3 = new Star(new Phi());
+	RE* r31 = new Star(new Ch('c'));
+
+	// c**
+	RE* r4 = new Star(new Star (new Ch('c')));
+	RE* r41 = new Ch('a');
+	RE* r42 = new Ch('b');
+
+	// phi + c
 	RE* r6 = new Alt (new Phi(), new Ch('c'));
-	RE* r6Simp = new Ch('c');
+	// c + phi
 	RE* r7 = new Alt (new Ch('c'), new Phi());
-	RE* r7Simp = r6Simp;
 
-	TestCaseRegex test[] = {{r6, r6Simp,"c", true},
-							{r6, r6Simp,"Hallo", false},
-							{r7, r7Simp,"c", true},
-							{r7, r7Simp,"Hallo", false}
+	// (phi + c) + c**
+	RE* r8 = new Alt(r6,r4);
 
+	//eps r
+	RE* r9 = new Conc(new Eps(), new Ch('c'));
+	//r eps
+	RE* r10 = new Conc(new Ch('c'), new Eps());
+
+	//r1 r2
+	RE* r11 = new Conc(new Ch('c'), new Phi());
+	RE* r12 = new Conc(new Phi(), new Ch('c'));
+
+	//eps ((a*)* (phi + b))
+	RE* r15 = new Conc(new Eps(), new Conc(new Star(new Ch('a')), new Alt(new Phi(), new Ch('b'))));
+
+	//r + r
+	RE* r16 = new Ch('c');
+	RE* r17 = new Alt(r16, r16);
+
+	TestCaseRegex test[] = {{r3,simpFix(r3), "c", true},								// 	1
+							{r3,simpFix(r31), "c", false},								// 	2
+							{r4,simpFix(r4), "c", true},								// 	3
+							{r4,simpFix(r4), simpFix(r4)->pretty().c_str(), true},		// 	4
+							{r41,simpFix(r42),"a", false},								// 	5
+							{r4,simpFix(r4), simpFix(r4)->pretty().c_str(), true},		// 	6
+							{r6,simpFix(r6), "c", true},								// 	7
+							{r6,simpFix(r42), "c", false},								// 	8
+							{r6,simpFix(r6),  simpFix(r6)->pretty().c_str(), true},		// 	9
+							{r7,simpFix(r7), "c", true},								// 10
+							{r8,simpFix(r8), "c", true},								// 11
+							{r8,simpFix(r42), "c", false},								// 12
+							{r8,simpFix(r8), simpFix(r8)->pretty().c_str(), true},		// 13
+							{r9,simpFix(r9), "c", true},								// 14
+							{r10,simpFix(r10), "c", true},								// 15
+							{r10,simpFix(r42), "c", false},								// 16
+							{r10,simpFix(r10), simpFix(r10)->pretty().c_str(), true},	// 17
+							{r11,simpFix(r11), "c", true},								// 18
+							{r11,simpFix(r42), "b", false},								// 19
+							{r11,simpFix(r11), simpFix(r11)->pretty().c_str(), true},	// 20
+							{r12,simpFix(r12), "c", true},								// 21
+							{r15,simpFix(r15), "c", true},								// 22
+							{r17,simpFix(r17), "c", true},								// 23
+							{r17,simpFix(r42), "c", false},								// 24
+							{r17,simpFix(r17), simpFix(r17)->pretty().c_str(), true}	// 25
 	};
 		runTestRegex(TEST_NO_REGEX, test);
 
@@ -110,8 +157,8 @@ void initializeTestRegex(void){
 void runTestRegex(int no, TestCaseRegex test[]){
 	Test t=FAIL;
 	for(int i=0; i<no; i++){
-		cout << "Test " << i << ": " << endl;
-		t = testRegex(test[i].r, test[i].simple, test[i].w, test[i].expected);
+		cout << "Test " << i+1 << ": " << endl;
+		t = testRegex(test[i].r, test[i].simpR, test[i].w, test[i].expected);
 		if(t){
 			cout << "Test OK" << endl;
 		}else{
@@ -131,7 +178,7 @@ Test testRegex(RE* r, RE* simpR, const char* c, bool expected){
 		t=FAIL;
 	}
 	cout << "RE: " << r->pretty() << endl;
-	cout << "RE Simp: " << simpR->simp()->pretty() << endl;
+	cout << "RE Simp: " << simpR->pretty() << endl;
 	cout << "word: " << c << endl;
 	cout << "Orakel: " << result << endl;
 	cout << "Expected: " << expected << endl;

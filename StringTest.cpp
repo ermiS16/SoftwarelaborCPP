@@ -7,44 +7,70 @@
 
 #include "StringTest.h"
 
-void initializeTestString(){
-	TestCaseString testsString[TEST_NO_STRING] = {
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""},
-			{"","",""}
-	};
-		runTestString(TEST_NO_STRING, testsString);
-}
+//void initializeTestString(){
+//	TestCaseString testsString[TEST_NO_STRING] = {
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""},
+//			{"","",""}
+//	};
+//		runTestString(TEST_NO_STRING, testsString);
+//}
 
-void runTestString(int no, TestCaseString test[]){
-
-}
+//void runTestString(int no, TestCaseString test[]){
+//
+//}
 
 void testString(){
+	  cout << "String()" << endl;
 	  String s1;
-	  cout << "s1: " << s1 << endl;
+	  cout << "String s1; => s1= " << s1 << endl;
+	  cout << endl;
+
+	  cout << "String(char c)" << endl;
+	  String s7('c');
+	  cout << "String s7('c') => s7 = " << s7 << endl;
+	  cout << endl;
+
+	  cout << "String(const char *s)" << endl;
 	  String s2("Hello");
-	  cout << "s2: " << s2 << endl;
+	  cout << "String s2(\"Hello\") => s2 = " << s2 << endl;
+	  cout << endl;
+
+	  cout << "String(String& s) / Kopierkonstruktor" << endl;
+	  cout << "s2 = " << s2 << endl;
 	  String s3(s2);
-	  cout << "s3: " << s3 << endl;
+	  cout << "String s3(s2) => s3 = " << s3 << endl;
+	  cout << "s2 = " << s2 << endl;
+	  cout << endl;
+
+//	  cout << "String(String&& s) / Movekonstruktor (Rule of Five)" << endl;
+//	  String s8 = String("Hello");
+//	  cout << "String s8 = s3 => s8 = " << s8 << endl;
+//	  cout << "s3 = " << s3 << endl;
+//	  cout << endl;
+
+	  cout << "operator=(String& s) / Zuweisung" << endl;
+	  cout << "s2 = " << s2 << endl;
 	  String s4 = s2;
-	  cout << "s4: " << s4 << endl;
+	  cout << "String s4 = s2 => s4 = " << s4 << ", " << "s2 = " << s2 << endl;
+	  cout << endl;
+
+	  cout << "operator+=(String& s) / Konkatenation" << endl;
+	  cout << "s1 = " << s1 << ", " << "s2 = " << s2 << endl;
 	  s1 += s2;
-	  cout << "s1: " << s1 << endl;
-	  String s5("World");
-	  s2 += s5;
-	  cout << "s2: " << s2 << endl;
-	  s2 += s2;
-	  cout << "s2: " << s2 << endl;
-	  String s6(s2);
-	  cout << "s6; " << s6 << endl;
+	  cout << "s1 += s2 => s1 = " << s1 << ", " << "s2 = " << s2 << endl;
+	  cout << endl;
+
+	  cout << "operator[](int index) / Array" << endl;
+	  cout << "s2 = " << s2 << endl;
+	  cout << "s2[2] = " << s2[2] << endl;
 }
 
 ostream& operator<< (ostream &out, String &s) {

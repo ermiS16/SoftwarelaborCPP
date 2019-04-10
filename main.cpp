@@ -10,26 +10,25 @@
 
 
 int main(void){
-	cout << "Start Test Reverse Recursiv" << endl;
-	testReverse();
-	cout << "End Test Reverse Recursiv" << endl;
+//	cout << "Start Test Reverse Recursiv" << endl;
+//	cout << endl;
+//	initializeReverseTestRecursive();
+//	cout << "End Test Reverse Recursiv" << endl;
+//	cout << endl;
 
 	cout << "Start Test Regex" << endl;
 	cout << endl;
-//	regex();
+	regex();
+	cout << endl;
 	initializeTestRegex();
 	cout << "End Test Regex" << endl;
 	cout << endl;
-	cout << "Start Test String Operators" << endl;
-	cout << endl;
-	initializeTestString();
-	testString();
-	cout << "End Test String Operators" << endl;
-	cout << endl;
-	return 0;
-}
 
-void testReverse(void){
-	char input[] = "Hallo";
-	cout <<	"Input: " << input << ", Reverse: " << reverseRec(input) << endl;
+//	cout << "Start Test String Operators" << endl;
+//	cout << endl;
+////	initializeTestString();
+//	testString();
+//	cout << "End Test String Operators" << endl;
+//	cout << endl;
+	return 0;
 }
