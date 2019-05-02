@@ -68,6 +68,13 @@ void testString(){
 	  cout << "s1 += s2 => s1 = " << s1 << ", " << "s2 = " << s2 << endl;
 	  cout << endl;
 
+	  cout << "operator+=(String& s) / Konkatenation 2" << endl;
+	  cout << "s1 = " << s1 << ", " << "s2 = " << s2 << endl;
+	  s1 += s4;
+	  cout << "s1 += s4 => s1 = " << s1 << ", " << "s4 = " << s2 << endl;
+	  cout << endl;
+
+
 	  cout << "operator[](int index) / Array" << endl;
 	  cout << "s2 = " << s2 << endl;
 	  cout << "s2[2] = " << s2[2] << endl;

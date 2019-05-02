@@ -26,7 +26,6 @@ int main(void){
 
 //	cout << "Start Test String Operators" << endl;
 //	cout << endl;
-////	initializeTestString();
 //	testString();
 //	cout << "End Test String Operators" << endl;
 //	cout << endl;
